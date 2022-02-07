@@ -2,6 +2,7 @@
   "version": "0.1.0",
   "name": "@nfort/formik-holism",
   "author": "@nfort",
+  "private": false,
   "module": "dist/formik-holism.esm.js",
   "license": "MIT",
   "main": "dist/index.js",
