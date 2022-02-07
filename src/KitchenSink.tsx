@@ -21,7 +21,7 @@ function checkAvailableAddress(address: string | null | undefined): Promise<bool
         return resolve(true);
       }
       return resolve(false);
-    }, 2000);
+    }, 3000);
   });
 }
 
