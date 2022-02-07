@@ -1,0 +1,34 @@
+import React from "react";
+import { Button } from "@holism/components";
+import { IProps } from "@holism/components/types/new-components/Button/interfaces";
+import { useFormikContext } from "formik";
+
+export const RESET_BUTTON_ID = "holism-reset-button";
+
+type RequiredProps = "dimension" | "type" | "color";
+type PartialProps = Partial<Pick<IProps, RequiredProps>>;
+export function ResetButton({
+  dimension = "small",
+  type = "reset",
+  color = "primary",
+  onClick,
+  children,
+  ...restProps
+}: PartialProps & Omit<IProps, RequiredProps>) {
+  const formContext = useFormikContext();
+  return (
+    <Button
+      id={RESET_BUTTON_ID}
+      dimension={dimension}
+      type={type}
+      color={color}
+      onClick={(event) => {
+        formContext.resetForm();
+        onClick && onClick(event);
+      }}
+      {...restProps}
+    >
+      {children}
+    </Button>
+  );
+}
