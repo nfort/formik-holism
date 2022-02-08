@@ -25,7 +25,7 @@ export function Select({
           <HolismSelect
             value={[value]}
             onChange={(selectedItem) => {
-              form.setFieldValue(field.name, selectedItem.value);
+              form.setFieldValue(field.name, selectedItem ? selectedItem.value : "");
               form.setFieldTouched(field.name, true, false);
               onChange && onChange(selectedItem);
             }}
