@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { FieldProps, Field, FieldAttributes } from "formik";
 import { Input as HolismInput } from "@holism/components";
 import { IProps } from "@holism/components/types/new-components/Input/interfaces";
@@ -17,12 +17,33 @@ export const Input = ({
   tooltipPosition = "top",
   validate,
   ...restProps
-}: Omit<IProps, RequiredProps> & PartialProps & Partial<Pick<FieldAttributes<any>, "validate">>) => {
+}: Omit<IProps, RequiredProps> &
+  PartialProps &
+  Partial<Pick<FieldAttributes<any>, "validate">> &
+  Partial<Pick<HTMLInputElement, "min" | "max">>) => {
+  let refInput = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (refInput.current) {
+      if (type === "date") {
+        const { max = "", min = "" } = restProps;
+        if (min) {
+          refInput.current.setAttribute("min", min);
+        }
+        if (max) {
+          refInput.current.setAttribute("max", max);
+        }
+      }
+    }
+  });
+
   return (
     <Field name={name} validate={validate}>
       {({ meta, field }: FieldProps) => {
         return (
           <HolismInput
+            //@ts-ignore
+            getRefProp={(ref) => (refInput = ref)}
             name={field.name}
             type={type}
             onBlur={(event) => {

@@ -30,18 +30,25 @@ function FormikDebug() {
   return <pre>{JSON.stringify({ values, touched, errors }, null, 2)}</pre>;
 }
 
-const validatationSchema = object({
+const validationSchema = object({
   firstName: string().required(),
   address: string().required().test("is-available-delivery", "Адрес не доступен для доставки", checkAvailableAddress),
   isAgree: boolean().required().notOneOf([false], " "),
   country: string().required(),
+  date: string().required(),
 });
 
 export function KitchenSink() {
   return (
     <Formik
-      initialValues={{ firstName: "", address: "", isAgree: false, country: "russia" }}
-      validationSchema={validatationSchema}
+      initialValues={{
+        firstName: "",
+        address: "",
+        isAgree: false,
+        country: "russia",
+        date: "2022-02-08",
+      }}
+      validationSchema={validationSchema}
       onSubmit={(values, formikHelpers) => {
         alert(JSON.stringify(values, null, 2));
         formikHelpers.setSubmitting(false);
@@ -60,6 +67,7 @@ export function KitchenSink() {
             { label: "США", value: "usa" },
           ]}
         />
+        <Input name="date" type="date" min="2022-02-06" max="2022-02-12" />
         <SubmitButton>Отправить</SubmitButton>
         <ResetButton>Сбросить</ResetButton>
         <FormikDebug />
