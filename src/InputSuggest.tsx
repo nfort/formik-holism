@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { InputSuggest as HolismInputSuggest } from "@holism/components";
 import { Field, FieldAttributes, FieldProps } from "formik";
 import { IProps, IPropsItem } from "@holism/components/types/new-components/InputSuggest/interfaces";
 import { RESET_BUTTON_ID } from "./ResetButton";
 import { SUBMIT_BUTTON_ID } from "./SubmitButton";
+import debounce from "lodash.debounce";
 
 type RequieredProps = "value" | "dimension" | "options" | "onSuggestionsFetchRequested";
 type PartialProps = Omit<Partial<Pick<IProps, RequieredProps>>, "onSuggestionsFetchRequested">;
@@ -21,18 +22,21 @@ export function InputSuggest({
   }) {
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState<IPropsItem[]>([]);
+  const _onSuggestionsFetchRequested = useCallback(
+    debounce((value: string) => {
+      if (!value) {
+        return;
+      }
+      setIsLoading(true);
+      onSuggestionsFetchRequested(value)
+        .then(setOptions)
+        .finally(() => setIsLoading(false));
+    }, 1000),
+    []
+  );
   return (
     <Field name={name} validate={validate}>
       {({ form, meta, field }: FieldProps) => {
-        const _onSuggestionsFetchRequested = (value: string) => {
-          if (!value) {
-            return;
-          }
-          setIsLoading(true);
-          onSuggestionsFetchRequested(value)
-            .then(setOptions)
-            .finally(() => setIsLoading(false));
-        };
         return (
           <HolismInputSuggest
             dimension={dimension}

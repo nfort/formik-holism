@@ -9,6 +9,7 @@ import { Checkbox } from "../src/Checkbox";
 import { Select } from "../src/Select";
 
 function fetchSuggestion(address: string): Promise<any> {
+  console.log("fired");
   return new Promise((resolve) => {
     setTimeout(() => resolve([{ label: "Москва, ул Пушкина, Дом Колотушкина", value: address }]), 2000);
   });
