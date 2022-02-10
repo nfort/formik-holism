@@ -5,14 +5,14 @@ import { useFormikContext } from "formik";
 
 export const RESET_BUTTON_ID = "holism-reset-button";
 
-type RequiredProps = "dimension" | "type" | "color";
+type RequiredProps = "dimension" | "type" | "color" | "children";
 type PartialProps = Partial<Pick<IProps, RequiredProps>>;
 export function ResetButton({
   dimension = "small",
   type = "reset",
-  color = "primary",
+  color = "secondary",
   onClick,
-  children,
+  children = "Очистить",
   ...restProps
 }: PartialProps & Omit<IProps, RequiredProps>) {
   const formContext = useFormikContext();

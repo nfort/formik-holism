@@ -37,6 +37,7 @@ export function InputSuggest({
   onSuggestionsFetchRequested,
   getSuggestionValue = defaultGetSuggestionValue,
   renderSuggestion = defaultRenderSuggestion,
+  alwaysRenderSuggestions = false,
   debounceTime = 1000,
   onFocus,
   onChange,
@@ -54,6 +55,7 @@ export function InputSuggest({
     renderSuggestion?: RenderSuggestion<IPropsItem>;
     getSuggestionValue?: GetSuggestionValue<IPropsItem>;
     debounceTime?: number;
+    alwaysRenderSuggestions?: boolean;
   }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isFocused, setFocusedFlag] = useState(false);
@@ -98,7 +100,7 @@ export function InputSuggest({
               )}
               <Autosuggest
                 suggestions={suggestions}
-                alwaysRenderSuggestions={true}
+                alwaysRenderSuggestions={alwaysRenderSuggestions}
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
                 inputProps={{

@@ -8,6 +8,7 @@ import { ResetButton } from "../src/ResetButton";
 import { Checkbox } from "../src/Checkbox";
 import { Select } from "../src/Select";
 import { DefaultTheme, ThemeProvider } from "@holism/components";
+import { Textarea } from "./Textarea";
 
 function fetchSuggestion(): Promise<any> {
   console.log("fired");
@@ -41,6 +42,7 @@ const validationSchema = object({
   isAgree: boolean().required().notOneOf([false], " "),
   country: string().required(),
   date: string().required(),
+  comment: string().required(),
 });
 
 export function KitchenSink() {
@@ -50,6 +52,7 @@ export function KitchenSink() {
         initialValues={{
           firstName: "",
           address: "",
+          comment: "",
           isAgree: false,
           country: "russia",
           date: "2022-02-08",
@@ -74,8 +77,9 @@ export function KitchenSink() {
           />
           <Input name="date" type="date" min="2022-02-06" max="2022-02-12" />
           <InputSuggest name="address" placeholder="Адрес" onSuggestionsFetchRequested={fetchSuggestion} />
+          <Textarea name="comment" placeholder="Коммент" />
           <SubmitButton>Отправить</SubmitButton>
-          <ResetButton>Сбросить</ResetButton>
+          <ResetButton />
           <FormikDebug />
         </Form>
       </Formik>
