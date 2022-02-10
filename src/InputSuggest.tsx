@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useCallback, useState } from "react";
 import { InputSuggestOption } from "@holism/components";
 import { Field, FieldAttributes, FieldProps } from "formik";

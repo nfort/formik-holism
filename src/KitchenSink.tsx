@@ -9,7 +9,7 @@ import { Checkbox } from "../src/Checkbox";
 import { Select } from "../src/Select";
 import { DefaultTheme, ThemeProvider } from "@holism/components";
 
-function fetchSuggestion(address: string): Promise<any> {
+function fetchSuggestion(): Promise<any> {
   console.log("fired");
   return new Promise((resolve) => {
     setTimeout(
@@ -42,15 +42,6 @@ const validationSchema = object({
   country: string().required(),
   date: string().required(),
 });
-
-const autocompleteOptions = [
-  { label: "москва", value: "1" },
-  { label: "париж", value: "2" },
-  { label: "прага", value: "3" },
-  { label: "краков", value: "4" },
-  { label: "иваново", value: "5" },
-  { label: "нижний новгород", value: "6" },
-];
 
 export function KitchenSink() {
   return (
