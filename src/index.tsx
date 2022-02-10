@@ -4,3 +4,4 @@ export { SubmitButton } from "./SubmitButton";
 export { ResetButton } from "./ResetButton";
 export { Checkbox } from "./Checkbox";
 export { InputSuggest } from "./InputSuggest";
+export { Textarea } from "./Textarea";
