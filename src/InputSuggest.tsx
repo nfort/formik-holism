@@ -150,6 +150,9 @@ export function InputSuggest({
                       dimension={dimension}
                       isFocus={isFocused}
                       placeholder={placeholder}
+                      onClear={() => {
+                        form.setFieldValue(field.name, "");
+                      }}
                       inputProps={{
                         ...others,
                         ref: innerRef,
