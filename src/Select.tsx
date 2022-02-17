@@ -39,7 +39,20 @@ export function Select({
                   return;
                 }
               }
-              field.onBlur(event);
+              /*
+                  При новом рендере контрола holism'a возвращается новый id в аттрибутах инпута, которые берется при вызове onBlur
+
+                  в touched будут следующие записи
+                  {
+                    react-select-1-input: true,
+                    react-select-2-input: true,
+                    react-select-3-input: true,
+                    react-select-[NUMBER]-input: true,
+                  }
+
+                  Поэтому передаем name
+               */
+              field.onBlur(name);
               onBlur && onBlur(event);
             }}
             dimension={dimension}
