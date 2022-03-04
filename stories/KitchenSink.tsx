@@ -89,7 +89,7 @@ export function KitchenSink() {
             <InputSuggest name="address" placeholder="Адрес" onSuggestionsFetchRequested={fetchSuggestion} />
           </Field>
           <Field>
-            <Textarea name="comment" minRows="5" placeholder="Коммент" />
+            <Textarea name="comment" minRows={5} placeholder="Коммент" />
           </Field>
           <Field>
             <SubmitButton>Отправить</SubmitButton>
