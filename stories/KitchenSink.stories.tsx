@@ -1,5 +1,5 @@
 import React from "react";
-import { KitchenSink } from "../src/KitchenSink";
+import { KitchenSink } from "./KitchenSink";
 import { ComponentStory } from "@storybook/react";
 
 export default {
