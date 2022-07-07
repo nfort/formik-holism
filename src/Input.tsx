@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { FieldProps, Field, FieldAttributes } from "formik";
-import { Input as HolismInput } from "@holism/components";
+import { Input as HolismInput } from "@nfort/holism-ui";
 import { IProps } from "@holism/components/types/new-components/Input/interfaces";
 import { SUBMIT_BUTTON_ID } from "./SubmitButton";
 import { RESET_BUTTON_ID } from "./ResetButton";

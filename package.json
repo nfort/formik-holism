@@ -22,11 +22,12 @@
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6008",
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
     "@holism/components": "^0.9.9",
+    "@nfort/holism-ui": "^1.5.0",
     "formik": "^2.2.9",
     "react": ">=17"
   },
@@ -53,6 +54,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@holism/components": "^0.9.9",
+    "@nfort/holism-ui": "^1.5.0",
     "@size-limit/preset-small-lib": "^7.0.5",
     "@storybook/addon-essentials": "^6.4.18",
     "@storybook/addon-info": "^5.3.21",
