@@ -32,7 +32,7 @@ const defaultRenderSuggestion = (suggestion) => (
 type RequieredProps = "value" | "dimension" | "options";
 type PartialProps = Partial<Pick<IProps, RequieredProps>>;
 export function InputSuggest({
-  dimension = "small",
+  dimension = "medium",
   name,
   onSuggestionsFetchRequested,
   getSuggestionValue = defaultGetSuggestionValue,

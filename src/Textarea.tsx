@@ -7,7 +7,7 @@ type RequiredProps = "theme";
 export function Textarea({
   name,
   validate,
-  dimension = "small",
+  dimension = "medium",
   ...restProps
 }: Omit<IProps, RequiredProps> & Partial<Pick<FieldAttributes<any>, "validate">>) {
   return (

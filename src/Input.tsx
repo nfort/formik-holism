@@ -13,7 +13,7 @@ export const Input = ({
   alignText = "left",
   onChange,
   onBlur,
-  dimension = "small",
+  dimension = "medium",
   tooltipPosition = "top",
   validate,
   ...restProps

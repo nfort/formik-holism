@@ -8,7 +8,7 @@ import { SUBMIT_BUTTON_ID } from "./SubmitButton";
 type RequiredProps = "dimension";
 type PartialProps = Partial<Pick<ISelect, RequiredProps>>;
 export function Select({
-  dimension = "small",
+  dimension = "medium",
   name,
   options,
   validate,

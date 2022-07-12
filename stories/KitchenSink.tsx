@@ -83,7 +83,7 @@ export function KitchenSink() {
             />
           </Field>
           <Field>
-            <Input name="date" type="date" min="2022-02-06" max="2022-02-12" />
+            <Input name="date" type="date" placeholder="Дата" min="2022-02-06" max="2022-02-12" />
           </Field>
           <Field>
             <InputSuggest name="address" placeholder="Адрес" onSuggestionsFetchRequested={fetchSuggestion} />

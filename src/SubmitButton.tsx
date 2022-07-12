@@ -8,7 +8,7 @@ export const SUBMIT_BUTTON_ID = "holism-submit-button";
 type RequiredProps = "dimension" | "type" | "color";
 type PartialProps = Partial<Pick<IProps, RequiredProps>>;
 export function SubmitButton({
-  dimension = "small",
+  dimension = "medium",
   type = "submit",
   color = "primary",
   children,

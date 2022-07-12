@@ -8,7 +8,7 @@ type PartialProps = Partial<Pick<IProps, RequiredProps>>;
 export function Checkbox({
   name,
   onChange,
-  dimension = "small",
+  dimension = "medium",
   ...restProps
 }: PartialProps & Omit<IProps, RequiredProps> & { name: string } & Partial<Pick<FieldAttributes<any>, "validate">>) {
   return (

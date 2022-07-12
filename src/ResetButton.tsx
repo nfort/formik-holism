@@ -8,7 +8,7 @@ export const RESET_BUTTON_ID = "holism-reset-button";
 type RequiredProps = "dimension" | "type" | "color" | "children";
 type PartialProps = Partial<Pick<IProps, RequiredProps>>;
 export function ResetButton({
-  dimension = "small",
+  dimension = "medium",
   type = "reset",
   color = "secondary",
   onClick,
