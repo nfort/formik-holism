@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Formik, Form, useFormikContext } from "formik";
-import { object, string, boolean } from "yup";
+import { object, string, boolean, date } from "yup";
 import { Input } from "../src/Input";
 import { InputSuggest } from "../src/InputSuggest";
 import { SubmitButton } from "../src/SubmitButton";
@@ -42,7 +42,8 @@ const validationSchema = object({
   address: string().required().test("is-available-delivery", "Адрес не доступен для доставки", checkAvailableAddress),
   isAgree: boolean().required().notOneOf([false], " "),
   country: string().required(),
-  date: string().required(),
+  date: date().required(),
+  dateStart: date().min(new Date("2022-08-31")).required(),
   comment: string().required(),
 });
 
@@ -56,7 +57,8 @@ export function KitchenSink() {
           comment: "",
           isAgree: false,
           country: "russia",
-          date: "2022-02-08",
+          date: new Date("2022-08-01"),
+          dateStart: new Date("2022-08-01"),
         }}
         validationSchema={validationSchema}
         onSubmit={(values, formikHelpers) => {
@@ -83,7 +85,19 @@ export function KitchenSink() {
             />
           </Field>
           <Field>
-            <Input name="date" type="date" placeholder="Дата" min="2022-02-06" max="2022-02-12" />
+            <Select
+              name="dateStart"
+              placeholder="Дата начало работы"
+              withoutOptionMessage="Ничего не найден"
+              options={[
+                { label: "2022-07-31", value: new Date("2022-07-31") },
+                { label: "2022-08-01", value: new Date("2022-08-01") },
+                { label: "2022-08-02", value: new Date("2022-08-02") },
+              ]}
+            />
+          </Field>
+          <Field>
+            <Input name="date" type="date" placeholder="Дата" min="2022-08-01" max="2022-08-28" />
           </Field>
           <Field>
             <InputSuggest name="address" placeholder="Адрес" onSuggestionsFetchRequested={fetchSuggestion} />

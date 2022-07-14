@@ -1,12 +1,12 @@
-import { Select as HolismSelect } from "@holism/components";
+import { Select as HolismSelect } from "@nfort/holism-ui";
 import { Field, FieldAttributes, FieldProps } from "formik";
-import React from "react";
-import { IItem, ISelect } from "@holism/components/types/new-components/Select/interfaces";
+import React, { ComponentProps } from "react";
 import { RESET_BUTTON_ID } from "./ResetButton";
 import { SUBMIT_BUTTON_ID } from "./SubmitButton";
 
+type BaseComponentProps = ComponentProps<typeof HolismSelect>;
 type RequiredProps = "dimension";
-type PartialProps = Partial<Pick<ISelect, RequiredProps>>;
+type PartialProps = Partial<Pick<BaseComponentProps, RequiredProps>>;
 export function Select({
   dimension = "medium",
   name,
@@ -16,11 +16,21 @@ export function Select({
   onBlur,
   withoutOptionMessage = "Ничего не найдено",
   ...restProps
-}: PartialProps & Omit<ISelect, RequiredProps> & Partial<Pick<FieldAttributes<any>, "validate">>) {
+}: PartialProps & Omit<BaseComponentProps, RequiredProps> & Partial<Pick<FieldAttributes<any>, "validate">>) {
   return (
     <Field name={name} validate={validate}>
       {({ field, form, meta }: FieldProps) => {
-        const value = options.find((option) => option.value === field.value) as IItem;
+        const value = options.find((option) => {
+          if (option.value instanceof Date) {
+            if (field.value instanceof Date) {
+              return field.value.getTime() === option.value.getTime();
+            } else {
+              throw new Error("Select: field.value не является Date");
+            }
+          }
+          return option.value === field.value;
+        });
+        if (!value) throw new Error("Нет значения для Select");
         return (
           <HolismSelect
             value={[value]}
