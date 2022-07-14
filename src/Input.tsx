@@ -1,12 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, ComponentProps } from "react";
 import { FieldProps, Field, FieldAttributes } from "formik";
 import { Input as HolismInput } from "@nfort/holism-ui";
-import { IProps } from "@holism/components/types/new-components/Input/interfaces";
 import { SUBMIT_BUTTON_ID } from "./SubmitButton";
 import { RESET_BUTTON_ID } from "./ResetButton";
 
+type BaseComponentProps = ComponentProps<typeof HolismInput>;
 type RequiredProps = "type" | "alignText" | "dimension" | "tooltipPosition" | "onChange";
-type PartialProps = Partial<Pick<IProps, RequiredProps>>;
+type PartialProps = Partial<Pick<BaseComponentProps, RequiredProps>>;
 export const Input = ({
   name,
   type = "text",
@@ -17,7 +17,7 @@ export const Input = ({
   tooltipPosition = "top",
   validate,
   ...restProps
-}: Omit<IProps, RequiredProps> &
+}: Omit<BaseComponentProps, RequiredProps> &
   PartialProps &
   Partial<Pick<FieldAttributes<any>, "validate">> &
   Partial<Pick<HTMLInputElement, "min" | "max">>) => {
@@ -42,7 +42,6 @@ export const Input = ({
       {({ meta, field }: FieldProps) => {
         return (
           <HolismInput
-            //@ts-ignore
             getRefProp={(ref) => (refInput = ref)}
             name={field.name}
             type={type}

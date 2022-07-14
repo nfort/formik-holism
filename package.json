@@ -27,7 +27,7 @@
   },
   "peerDependencies": {
     "@holism/components": "^0.9.9",
-    "@nfort/holism-ui": "^1.5.0",
+    "@nfort/holism-ui": "^2.1.2",
     "formik": "^2.2.9",
     "react": ">=17"
   },
@@ -37,9 +37,7 @@
     }
   },
   "prettier": {
-    "printWidth": 120,
-    "semi": true,
-    "trailingComma": "es5"
+    "printWidth": 120
   },
   "size-limit": [
     {
@@ -54,7 +52,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@holism/components": "^0.9.9",
-    "@nfort/holism-ui": "^1.5.0",
+    "@nfort/holism-ui": "^2.1.2",
     "@size-limit/preset-small-lib": "^7.0.5",
     "@storybook/addon-essentials": "^6.4.18",
     "@storybook/addon-info": "^5.3.21",
