@@ -20,20 +20,22 @@ export function Select({
   return (
     <Field name={name} validate={validate}>
       {({ field, form, meta }: FieldProps) => {
+        const computedProps: Pick<BaseComponentProps, "value" | "defaultValue"> = {};
         const value = options.find((option) => {
           if (option.value instanceof Date) {
             if (field.value instanceof Date) {
               return field.value.getTime() === option.value.getTime();
-            } else {
-              throw new Error("Select: field.value не является Date");
             }
+            throw new Error("Select: field.value не является Date");
           }
           return option.value === field.value;
         });
-        if (!value) throw new Error("Нет значения для Select");
+        if (value) {
+          computedProps.value = [value];
+        }
         return (
           <HolismSelect
-            value={[value]}
+            {...computedProps}
             onChange={(selectedItem) => {
               form.setFieldValue(field.name, selectedItem ? selectedItem.value : "");
               form.setFieldTouched(field.name, true, false);
