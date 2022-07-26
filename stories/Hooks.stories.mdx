@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import README from "../README.md"
+
+<Meta title="Hooks" />
+
+# Hooks
+
+```ts
+useArrayFieldFormik<Values extends {[key: string]: string[]}>(name: string): readonly [string[], (newValue: string) => void]
+```
+
+```ts
+useDeleteFieldFormik(): (fieldOrFields: (string | string[])) => void
+```
+
+export const Component = () => <SyntaxHighlighter/>

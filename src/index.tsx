@@ -5,3 +5,6 @@ export { ResetButton } from "./ResetButton";
 export { Checkbox } from "./Checkbox";
 export { InputSuggest } from "./InputSuggest";
 export { Textarea } from "./Textarea";
+
+export { useArrayFieldFormik } from "./hooks/useArrayFieldFormik";
+export { useDeleteFieldFormik } from "./hooks/useDeleteFieldFormik";
