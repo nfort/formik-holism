@@ -26,8 +26,7 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "@holism/components": "^0.9.9",
-    "@nfort/holism-ui": "^2.1.2",
+    "@nfort/holism-ui": "^2.8.3",
     "formik": "^2.2.9",
     "react": ">=17"
   },
@@ -51,21 +50,20 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.16.12",
-    "@holism/components": "^0.9.9",
-    "@nfort/holism-ui": "^2.1.2",
+    "@nfort/holism-ui": "^2.8.3",
     "@size-limit/preset-small-lib": "^7.0.5",
     "@storybook/addon-essentials": "^6.4.18",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.4.18",
     "@storybook/addons": "^6.4.18",
     "@storybook/react": "^6.4.18",
-    "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.clonedeep": "^4.5.6",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/yup": "^0.29.13",
     "babel-loader": "^8.2.3",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "3.4.1",
     "formik": "^2.2.9",
     "husky": "^7.0.4",
     "prettier": "^2.5.1",
@@ -79,8 +77,8 @@
     "yup": "^0.32.11"
   },
   "dependencies": {
-    "lodash.debounce": "^4.0.8",
+    "@nfort/react-autosuggest": "^11.0.1",
     "lodash.clonedeep": "^4.5.0",
-    "@nfort/react-autosuggest": "^11.0.1"
+    "lodash.debounce": "^4.0.8"
   }
 }

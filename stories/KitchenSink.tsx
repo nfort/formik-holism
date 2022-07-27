@@ -7,7 +7,7 @@ import { SubmitButton } from "../src/SubmitButton";
 import { ResetButton } from "../src/ResetButton";
 import { Checkbox } from "../src/Checkbox";
 import { Select } from "../src/Select";
-import { DefaultTheme, ThemeProvider } from "@holism/components";
+import { DefaultTheme, ThemeProvider } from "@nfort/holism-ui";
 import { Textarea } from "../src/Textarea";
 import styled from "styled-components";
 

@@ -1,32 +1,23 @@
-// @ts-nocheck
-
 import React, { useCallback, useState } from "react";
-import { InputSuggestOption } from "@holism/components";
+import { InputSuggest as HolismInputSuggest } from "@nfort/holism-ui";
 import { Field, FieldAttributes, FieldProps } from "formik";
-import {
-  SuggestContainer,
-  InputContainer,
-  LabelStyle,
-  ErrorMessageStyle,
-  NoOptionStyle,
-} from "@holism/components/esm/new-components/InputSuggest/style";
-import SuggestInputField from "@holism/components/esm/new-components/InputSuggest/components/Input";
-import LoadingIndicator from "@holism/components/esm/new-components/InputSuggest/components/LoadingIndicator";
 import { RESET_BUTTON_ID } from "./ResetButton";
 import { SUBMIT_BUTTON_ID } from "./SubmitButton";
 import debounce from "lodash.debounce";
+/* @ts-ignore-next-line */
 import Autosuggest from "@nfort/react-autosuggest";
+/* @ts-ignore-next-line */
 import { GetSuggestionValue, RenderSuggestion } from "@types/react-autosuggest";
-import { IPropsItem, IProps } from "@holism/components/types/new-components/InputSuggest/interfaces";
+import { IProps, IPropsItem } from "@nfort/holism-ui/dist/InputSuggest/interfaces";
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-const defaultGetSuggestionValue = (suggestion) => suggestion.value;
+const defaultGetSuggestionValue = (suggestion: any) => suggestion.value;
 
 // Use your imagination to render suggestions.
-const defaultRenderSuggestion = (suggestion) => (
-  <InputSuggestOption value={suggestion.value} label={suggestion.label} />
+const defaultRenderSuggestion = (suggestion: any) => (
+  <HolismInputSuggest.InputSuggestOption value={suggestion.value} label={suggestion.label} />
 );
 
 type RequieredProps = "value" | "dimension" | "options";
@@ -67,6 +58,7 @@ export function InputSuggest({
       }
       setIsLoading(true);
       onSuggestionsFetchRequested(value)
+        /* @ts-ignore-next-line */
         .then(setSuggestions)
         .finally(() => setIsLoading(false));
     }, debounceTime),
@@ -79,7 +71,7 @@ export function InputSuggest({
     <Field name={name} validate={validate}>
       {({ form, meta, field }: FieldProps) => {
         return (
-          <SuggestContainer
+          <HolismInputSuggest.SuggestContainer
             dimension={dimension}
             isError={meta.touched && !!meta.error}
             isDisabled={restProps.isDisabled}
@@ -87,16 +79,16 @@ export function InputSuggest({
             hasValue={!!field.value}
             className={restProps.className}
           >
-            <InputContainer>
+            <HolismInputSuggest.InputContainer>
               {label && dimension === "small" && (
-                <LabelStyle
+                <HolismInputSuggest.LabelStyle
                   data-element="inputSuggest-label"
                   htmlFor={name}
                   hasValue={!!field.value}
                   isError={meta.touched && !!meta.error}
                 >
                   {label}
-                </LabelStyle>
+                </HolismInputSuggest.LabelStyle>
               )}
               <Autosuggest
                 suggestions={suggestions}
@@ -106,15 +98,20 @@ export function InputSuggest({
                 inputProps={{
                   name,
                   value: field.value,
+
+                  /* @ts-ignore-next-line */
                   onFocus: (event) => {
                     setFocusedFlag(true);
                     onFocus && onFocus(event, field.value);
                   },
+                  /* @ts-ignore-next-line */
                   onChange: (event, { newValue }) => {
                     form.setFieldValue(field.name, newValue);
                     form.setFieldTouched(field.name, true, false);
+                    /* @ts-ignore-next-line */
                     onChange && onChange(event, newValue);
                   },
+                  /* @ts-ignore-next-line */
                   onBlur: (event) => {
                     if (event.relatedTarget instanceof Element) {
                       /*
@@ -137,19 +134,20 @@ export function InputSuggest({
                 renderInputComponent={(inputProps: any) => {
                   const { innerRef, ...others } = inputProps;
                   return (
-                    <SuggestInputField
+                    <HolismInputSuggest.SuggestInputField
                       styledProps={{
                         dimension,
-                        isDisabled: restProps.isDisabled,
+                        isDisabled: !!restProps.isDisabled,
                         isSuggestionsListOpened: false,
                         isError: meta.touched && !!meta.error,
+                        /* @ts-ignore-next-line */
                         isFocus: isFocused,
                         hasValue: !!field.value,
                         value: field.value || "",
                       }}
                       dimension={dimension}
                       isFocus={isFocused}
-                      placeholder={placeholder}
+                      placeholder={placeholder || ""}
                       onClear={() => {
                         form.setFieldValue(field.name, "");
                       }}
@@ -161,21 +159,23 @@ export function InputSuggest({
                   );
                 }}
               />
-            </InputContainer>
-            {isLoading && !suggestions.length && <LoadingIndicator />}
+            </HolismInputSuggest.InputContainer>
+            {isLoading && !suggestions.length && <HolismInputSuggest.LoadingIndicator />}
             {isFocused && !isLoading && !suggestions.length && noOptionsMessage && (
-              <NoOptionStyle
+              <HolismInputSuggest.NoOptionStyle
                 data-element="inputSuggest-noOption"
                 isError={meta.touched && !!meta.error}
                 dimension={dimension}
               >
                 {noOptionsMessage}
-              </NoOptionStyle>
+              </HolismInputSuggest.NoOptionStyle>
             )}
             {meta.touched && meta.error && (
-              <ErrorMessageStyle data-element="inputSuggest-error">{meta.error}</ErrorMessageStyle>
+              <HolismInputSuggest.ErrorMessageStyle data-element="inputSuggest-error">
+                {meta.error}
+              </HolismInputSuggest.ErrorMessageStyle>
             )}
-          </SuggestContainer>
+          </HolismInputSuggest.SuggestContainer>
         );
       }}
     </Field>

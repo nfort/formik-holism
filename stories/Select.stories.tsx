@@ -1,6 +1,6 @@
 import React from "react";
 import { Select } from "../src/Select";
-import { DefaultTheme, ThemeProvider } from "@holism/components";
+import { DefaultTheme, ThemeProvider } from "@nfort/holism-ui";
 import { ComponentMeta } from "@storybook/react";
 import { Formik, Form, useFormikContext } from "formik";
 import styled from "styled-components";

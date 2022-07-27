@@ -22,7 +22,7 @@ export function useArrayFieldFormik<Values extends { [key: string]: string[] }>(
       setFieldValue(name, copyValue, false);
       setFieldTouched(name, true, false);
     },
-    [setFieldValue, setFieldTouched]
+    [setFieldValue, setFieldTouched, name, value]
   );
 
   return [value, updater] as const;

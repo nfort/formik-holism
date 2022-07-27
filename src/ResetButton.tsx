@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "@holism/components";
-import { IProps } from "@holism/components/types/new-components/Button/interfaces";
+import { Button } from "@nfort/holism-ui";
 import { useFormikContext } from "formik";
+import { IProps } from "@nfort/holism-ui/dist/Button/interfaces";
 
 export const RESET_BUTTON_ID = "holism-reset-button";
 

@@ -1,6 +1,6 @@
-import { CheckBox as HolismCheckBox } from "@holism/components";
+import { CheckBox as HolismCheckBox } from "@nfort/holism-ui";
+import { IProps } from "@nfort/holism-ui/dist/CheckBox/interfaces";
 import { Field, FieldAttributes, FieldProps } from "formik";
-import { IProps } from "@holism/components/types/new-components/CheckBox/interfaces";
 import React from "react";
 
 type RequiredProps = "dimension" | "onChange" | "isChecked";

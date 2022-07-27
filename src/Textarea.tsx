@@ -1,7 +1,7 @@
 import { Field, FieldAttributes, FieldProps } from "formik";
-import { Textarea as HolismTextarea } from "@holism/components";
-import { IProps } from "@holism/components/types/new-components/TextArea/interfaces";
+import { TextArea as HolismTextarea } from "@nfort/holism-ui";
 import React from "react";
+import { IProps } from "@nfort/holism-ui/dist/TextArea/interfaces";
 
 type RequiredProps = "theme";
 export function Textarea({
